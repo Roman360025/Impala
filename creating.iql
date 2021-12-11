@@ -1,0 +1,183 @@
+create database if not exists testdb;
+use testdb;
+
+DROP TABLE if exists external_userlog;
+CREATE TABLE IF NOT EXISTS external_userlog (
+Day int,
+TickTime DOUBLE,
+Speed DOUBLE)
+PARTITIONED BY (UserId int, HValue int)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+ALTER TABLE external_userlog add partition (HValue=7, UserId=1);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=2);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=3);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=4);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=5);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=6);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=7);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=8);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=9);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=10);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=11);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=12);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=13);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=14);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=15);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=16);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=17);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=18);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=19);
+ALTER TABLE external_userlog add partition (HValue=7, UserId=20);
+
+ALTER TABLE external_userlog add partition (HValue=15, UserId=1);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=2);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=3);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=4);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=5);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=6);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=7);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=8);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=9);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=10);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=11);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=12);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=13);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=14);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=15);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=16);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=17);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=18);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=19);
+ALTER TABLE external_userlog add partition (HValue=15, UserId=20);
+
+ALTER TABLE external_userlog add partition (HValue=85, UserId=1);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=2);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=3);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=4);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=5);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=6);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=7);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=8);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=9);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=10);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=11);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=12);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=13);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=14);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=15);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=16);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=17);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=18);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=19);
+ALTER TABLE external_userlog add partition (HValue=85, UserId=20);
+
+ALTER TABLE external_userlog add partition (HValue=96, UserId=1);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=2);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=3);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=4);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=5);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=6);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=7);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=8);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=9);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=10);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=11);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=12);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=13);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=14);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=15);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=16);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=17);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=18);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=19);
+ALTER TABLE external_userlog add partition (HValue=96, UserId=20);
+
+
+LOAD DATA INPATH '/tmp/userlog.h7.u1.csv' INTO TABLE external_userlog partition (UserId=1,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u2.csv' INTO TABLE external_userlog partition (UserId=2,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u3.csv' INTO TABLE external_userlog partition (UserId=3,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u4.csv' INTO TABLE external_userlog partition (UserId=4,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u5.csv' INTO TABLE external_userlog partition (UserId=5,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u6.csv' INTO TABLE external_userlog partition (UserId=6,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u7.csv' INTO TABLE external_userlog partition (UserId=7,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u8.csv' INTO TABLE external_userlog partition (UserId=8,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u9.csv' INTO TABLE external_userlog partition (UserId=9,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u10.csv' INTO TABLE external_userlog partition (UserId=10,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u11.csv' INTO TABLE external_userlog partition (UserId=11,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u12.csv' INTO TABLE external_userlog partition (UserId=12,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u13.csv' INTO TABLE external_userlog partition (UserId=13,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u14.csv' INTO TABLE external_userlog partition (UserId=14,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u15.csv' INTO TABLE external_userlog partition (UserId=15,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u16.csv' INTO TABLE external_userlog partition (UserId=16,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u17.csv' INTO TABLE external_userlog partition (UserId=17,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u18.csv' INTO TABLE external_userlog partition (UserId=18,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u19.csv' INTO TABLE external_userlog partition (UserId=19,HValue=7);
+LOAD DATA INPATH '/tmp/userlog.h7.u20.csv' INTO TABLE external_userlog partition (UserId=20,HValue=7);
+
+LOAD DATA INPATH '/tmp/userlog.h15.u1.csv' INTO TABLE external_userlog partition (UserId=1,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u2.csv' INTO TABLE external_userlog partition (UserId=2,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u3.csv' INTO TABLE external_userlog partition (UserId=3,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u4.csv' INTO TABLE external_userlog partition (UserId=4,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u5.csv' INTO TABLE external_userlog partition (UserId=5,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u6.csv' INTO TABLE external_userlog partition (UserId=6,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u7.csv' INTO TABLE external_userlog partition (UserId=7,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u8.csv' INTO TABLE external_userlog partition (UserId=8,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u9.csv' INTO TABLE external_userlog partition (UserId=9,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u10.csv' INTO TABLE external_userlog partition (UserId=10,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u11.csv' INTO TABLE external_userlog partition (UserId=11,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u12.csv' INTO TABLE external_userlog partition (UserId=12,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u13.csv' INTO TABLE external_userlog partition (UserId=13,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u14.csv' INTO TABLE external_userlog partition (UserId=14,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u15.csv' INTO TABLE external_userlog partition (UserId=15,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u16.csv' INTO TABLE external_userlog partition (UserId=16,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u17.csv' INTO TABLE external_userlog partition (UserId=17,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u18.csv' INTO TABLE external_userlog partition (UserId=18,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u19.csv' INTO TABLE external_userlog partition (UserId=19,HValue=15);
+LOAD DATA INPATH '/tmp/userlog.h15.u20.csv' INTO TABLE external_userlog partition (UserId=20,HValue=15);
+
+LOAD DATA INPATH '/tmp/userlog.h85.u1.csv' INTO TABLE external_userlog partition (UserId=1,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u2.csv' INTO TABLE external_userlog partition (UserId=2,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u3.csv' INTO TABLE external_userlog partition (UserId=3,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u4.csv' INTO TABLE external_userlog partition (UserId=4,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u5.csv' INTO TABLE external_userlog partition (UserId=5,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u6.csv' INTO TABLE external_userlog partition (UserId=6,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u7.csv' INTO TABLE external_userlog partition (UserId=7,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u8.csv' INTO TABLE external_userlog partition (UserId=8,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u9.csv' INTO TABLE external_userlog partition (UserId=9,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u10.csv' INTO TABLE external_userlog partition (UserId=10,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u11.csv' INTO TABLE external_userlog partition (UserId=11,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u12.csv' INTO TABLE external_userlog partition (UserId=12,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u13.csv' INTO TABLE external_userlog partition (UserId=13,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u14.csv' INTO TABLE external_userlog partition (UserId=14,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u15.csv' INTO TABLE external_userlog partition (UserId=15,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u16.csv' INTO TABLE external_userlog partition (UserId=16,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u17.csv' INTO TABLE external_userlog partition (UserId=17,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u18.csv' INTO TABLE external_userlog partition (UserId=18,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u19.csv' INTO TABLE external_userlog partition (UserId=19,HValue=85);
+LOAD DATA INPATH '/tmp/userlog.h85.u20.csv' INTO TABLE external_userlog partition (UserId=20,HValue=85);
+
+LOAD DATA INPATH '/tmp/userlog.h96.u1.csv' INTO TABLE external_userlog partition (UserId=1,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u2.csv' INTO TABLE external_userlog partition (UserId=2,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u3.csv' INTO TABLE external_userlog partition (UserId=3,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u4.csv' INTO TABLE external_userlog partition (UserId=4,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u5.csv' INTO TABLE external_userlog partition (UserId=5,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u6.csv' INTO TABLE external_userlog partition (UserId=6,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u7.csv' INTO TABLE external_userlog partition (UserId=7,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u8.csv' INTO TABLE external_userlog partition (UserId=8,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u9.csv' INTO TABLE external_userlog partition (UserId=9,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u10.csv' INTO TABLE external_userlog partition (UserId=10,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u11.csv' INTO TABLE external_userlog partition (UserId=11,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u12.csv' INTO TABLE external_userlog partition (UserId=12,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u13.csv' INTO TABLE external_userlog partition (UserId=13,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u14.csv' INTO TABLE external_userlog partition (UserId=14,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u15.csv' INTO TABLE external_userlog partition (UserId=15,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u16.csv' INTO TABLE external_userlog partition (UserId=16,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u17.csv' INTO TABLE external_userlog partition (UserId=17,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u18.csv' INTO TABLE external_userlog partition (UserId=18,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u19.csv' INTO TABLE external_userlog partition (UserId=19,HValue=96);
+LOAD DATA INPATH '/tmp/userlog.h96.u20.csv' INTO TABLE external_userlog partition (UserId=20,HValue=96);
+
